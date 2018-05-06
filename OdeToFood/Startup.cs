@@ -25,34 +25,13 @@ namespace OdeToFood
         {
             //if (env.IsDevelopment())
             //{
-            //    app.UseDeveloperExceptionPage();
+            app.UseDeveloperExceptionPage();
             //}
-
-            app.Use(next =>
-            {
-                return async context =>
-                {
-                    logger.LogInformation("Request incoming");
-                    if (context.Request.Path.StartsWithSegments("/mym"))
-                    {
-                        await context.Response.WriteAsync("Hit!!");
-                        logger.LogInformation("Request handled");
-                    }
-                    else
-                    {
-                        await next(context);
-                        logger.LogInformation("Request outgoing");
-                    }
-                };
-            });
-
-            app.UseWelcomePage(new WelcomePageOptions
-            {
-                Path = "/wp"
-            });
 
             app.Run(async (context) =>
             {
+                throw new Exception("error!");
+
                 var greeting = greeter.GetMessageOfTheDay();
                 await context.Response.WriteAsync(greeting);
             });
