@@ -7,9 +7,11 @@ namespace OdeToFood.Controllers
     {
         public IActionResult Index()
         {
-            var model = new Restaurant { Id = 1, Name = "Jordan Chicken"};
+            var model = new Restaurant {
+                Id = 1,
+                Name = "Jordan Chicken"};
 
-            return new ObjectResult(model);
+            return View(model);
         }
     }
 }
